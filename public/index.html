@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>IronLog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">IRON<span>LOG</span></div>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="weight">Weight</button>
+    <button class="tab-btn" data-tab="lifting">Lifting</button>
+    <button class="tab-btn" data-tab="settings">Settings</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ==================== WEIGHT TAB ==================== -->
+  <section id="tab-weight" class="tab-panel active">
+    <div class="mode-switch">
+      <button class="mode-btn active" data-mode="cut">CUT</button>
+      <button class="mode-btn" data-mode="bulk">LEAN BULK</button>
+    </div>
+
+    <div class="card status-card">
+      <div class="status-grid">
+        <div class="stat">
+          <div class="stat-label">Today's weight</div>
+          <div class="stat-value" id="w-today">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Expected today</div>
+          <div class="stat-value" id="w-expected">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Delta</div>
+          <div class="stat-value" id="w-delta">—</div>
+        </div>
+      </div>
+      <div id="w-status-banner" class="status-banner">Set your goal in Settings to see progress.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Log today's weight</div>
+      <form id="weight-form" class="inline-form">
+        <input type="date" id="weight-date" required>
+        <input type="number" step="0.1" id="weight-input" placeholder="lbs" required>
+        <button type="submit" class="btn-primary">Save</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Trend</div>
+      <canvas id="weight-chart" height="220"></canvas>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Body-fat target estimate</div>
+      <div id="bf-target-display" class="muted">Not set — add it in Settings.</div>
+    </div>
+  </section>
+
+  <!-- ==================== LIFTING TAB ==================== -->
+  <section id="tab-lifting" class="tab-panel">
+    <div class="card">
+      <div class="card-title">Exercise</div>
+      <div class="inline-form">
+        <select id="exercise-select"></select>
+        <input type="text" id="new-exercise-input" placeholder="Add new lift…">
+        <button id="add-exercise-btn" class="btn-secondary">Add</button>
+      </div>
+    </div>
+
+    <div class="card" id="prev-session-card" style="display:none;">
+      <div class="card-title">Last session — beat this</div>
+      <div id="prev-session-list" class="prev-list"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Log a set</div>
+      <form id="set-form" class="inline-form">
+        <input type="number" step="0.5" id="set-weight" placeholder="Weight (lbs)" required>
+        <input type="number" step="1" id="set-reps" placeholder="Reps" required>
+        <button type="submit" class="btn-primary">Log set</button>
+      </form>
+      <div id="today-sets-list" class="today-list"></div>
+    </div>
+
+    <div class="card timer-card">
+      
