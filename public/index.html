@@ -94,4 +94,48 @@
     </div>
 
     <div class="card timer-card">
-      
+            <div class="timer-display" id="timer-display">2:00</div>
+      <div class="timer-bar-track"><div class="timer-bar-fill" id="timer-bar"></div></div>
+      <div class="timer-controls">
+        <button id="timer-start" class="btn-secondary">Start</button>
+        <button id="timer-reset" class="btn-secondary">Reset</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Progress chart</div>
+      <div class="chart-toggle">
+        <button class="chart-toggle-btn active" data-metric="weight">Weight</button>
+        <button class="chart-toggle-btn" data-metric="reps">Reps</button>
+      </div>
+      <canvas id="lift-chart" height="220"></canvas>
+    </div>
+  </section>
+
+  <!-- ==================== SETTINGS TAB ==================== -->
+  <section id="tab-settings" class="tab-panel">
+    <div class="mode-switch">
+      <button class="mode-btn active" data-mode-settings="cut">CUT goals</button>
+      <button class="mode-btn" data-mode-settings="bulk">LEAN BULK goals</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Goal setup</div>
+      <form id="goals-form" class="stacked-form">
+        <label>Start weight (lbs)<input type="number" step="0.1" id="g-start-weight"></label>
+        <label>Start date<input type="date" id="g-start-date"></label>
+        <label>Goal weight (lbs)<input type="number" step="0.1" id="g-goal-weight"></label>
+        <label>Goal date<input type="date" id="g-goal-date"></label>
+        <label>Target body-fat % (optional)<input type="number" step="0.1" id="g-bf-target"></label>
+        <label>Estimated weight at that body-fat % (optional)<input type="number" step="0.1" id="g-bf-weight"></label>
+        <button type="submit" class="btn-primary">Save goals</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
+
