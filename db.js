@@ -43,6 +43,23 @@ CREATE TABLE IF NOT EXISTS sets (
   created_at TEXT DEFAULT (datetime('now')),
   FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS workout_days (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  day TEXT NOT NULL,
+  exercise_id INTEGER NOT NULL,
+  UNIQUE(day, exercise_id),
+  FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS meals (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  date TEXT NOT NULL,
+  name TEXT NOT NULL,
+  calories INTEGER,
+  time TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);
 `);
 
 // seed default goal rows for the two modes if not present
